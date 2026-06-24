@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+  <title>Smart Review Studio • AI Powered</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-wrapper">
+  <div class="global-header">
+    <div class="logo-container">
+      <img src="logo.png" alt="Business Logo" class="logo-svg" style="width:110px; height:110px;">
+    </div>
+    <div class="star-rating">★★★★★</div>
+    <div class="business-name" id="bizName">Your Business</div>
+    <div class="biz-meta" id="bizMeta">⭐ 4.8 ★ (1000+ reviews) • Premium Service • Since 2020</div>
+  </div>
+
+  <!-- STEP 1 -->
+  <div id="step1Container" class="step-container">
+    <div style="margin-bottom: 12px;">
+      <h3 style="font-size: 1.2rem;">☕ 1. Select your favourites</h3>
+      <p style="font-size: 0.75rem; color: var(--text-tertiary);">Tap categories to expand, then select products and attributes.</p>
+    </div>
+
+    <!-- Shop Code Input -->
+    <div style="margin-bottom: 16px; background: var(--bg-elevated); padding: 14px; border-radius: 16px;">
+      <label style="font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 6px;">🏪 Your Shop Code</label>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <input type="text" id="shopCodeInput" placeholder="Enter your shop code (e.g., COFFEE01)" style="flex:1; padding: 10px 14px; border-radius: 40px; border: 1px solid var(--border-subtle); font-size: 0.85rem; min-width: 180px;">
+        <button id="saveShopCodeBtn" style="background: var(--accent-blue); color: white; border: none; padding: 10px 20px; border-radius: 40px; cursor: pointer; font-weight: 600; font-size: 0.85rem;">Save</button>
+      </div>
+      <div id="shopCodeStatus" style="font-size: 0.75rem; margin-top: 6px; color: var(--text-tertiary);">💡 Optional: Enter a shop code so we can track your usage.</div>
+    </div>
+
+    <div id="categoriesContainer"></div>
+
+    <div style="margin: 20px 0 10px;">
+      <h4 style="font-size: 1rem;">✨ What else stood out?</h4>
+      <div id="attributesContainer" class="product-list" style="background:transparent; border:none; padding:0; gap:8px;"></div>
+    </div>
+
+    <div id="selectedPreview" class="selected-items-badge">✨ No items selected yet.</div>
+
+    <div class="sticky-generate-wrapper">
+      <button class="generate-main-btn" id="step1GenerateBtn">✨ Generate AI Review →</button>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div id="step2Container" class="step-container" style="display: none;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+      <h3>📝 2. Your AI‑generated review</h3>
+      <div>
+        <button id="regenerateBtn" class="reset-link" style="margin-right:12px;">⟳ Regenerate</button>
+        <button id="backToStep1Btn" class="reset-link">← Change selection</button>
+      </div>
+    </div>
+    <div class="generated-review-card">
+      <div style="font-weight: 600; margin-bottom: 8px; display: flex; justify-content: space-between;">
+        <span>✨ Based on your selection:</span>
+        <span id="modeIndicator" style="font-size: 0.7rem; background: var(--bg-elevated); padding: 2px 10px; border-radius: 20px; color: var(--text-tertiary);">🤖 AI Mode</span>
+      </div>
+      <div id="generatedReviewText" class="review-text-large" style="min-height: 80px;"></div>
+      <div id="loadingIndicator" style="display: none; text-align: center; padding: 20px; color: var(--text-tertiary);">⏳ Generating review... (2-5 seconds)</div>
+    </div>
+    <div class="action-buttons-row">
+      <button id="copyReviewBtn" class="btn-secondary">📋 Copy review</button>
+      <button id="nextToStep3Btn" class="btn-primary">➡️ Next: Publish</button>
+    </div>
+    <div id="copyFeedbackMsg"></div>
+    <div class="note-text">✨ You can edit the review manually before pasting.</div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div id="step3Container" class="step-container" style="display: none;">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <h3>🌐 3. Publish your review</h3>
+      <button id="backToStep2Btn" class="reset-link">← Edit review</button>
+    </div>
+    <div class="final-card">
+      <span>✅ Your review</span>
+      <div id="finalReviewTextDisplay" class="final-review-box">— No review —</div>
+      <a id="openGoogleReviewLink" href="#" target="_blank" class="google-btn-big">
+        🌍 Open Google Review → Paste your text
+      </a>
+      <button id="copyFinalBtn" class="btn-secondary" style="width:100%; margin-top: 6px;">📋 Copy review again</button>
+      <button id="restartFromStep1" class="reset-link">⟳ Start over (new selection)</button>
+      <div class="note-text">💡 Paste your review into the Google review box. Thank you for supporting us!</div>
+    </div>
+  </div>
+
+  <div class="copyright">© 2026 · Smart Review Studio · powered by Gemini AI</div>
+</div>
+
+<script src="database.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
