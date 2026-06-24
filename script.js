@@ -4,7 +4,7 @@
 (function() {
   // ---------- CONFIGURATION ----------
   // 🔥 CHANGE THIS: Your backend URL when hosted
-  const BACKEND_URL = 'https://nbc-backend-kj08.onrender.com';
+  const BACKEND_URL = 'https://nbc-backend-1.onrender.com';
 
   // ---------- STATE ----------
   let collapsedState = {};
